@@ -26,12 +26,12 @@ RUN apk update && apk upgrade\
 	&& ./configure --user=nginx --group=nginx --prefix=/usr/local/nginx\
 	&& make\
 	&& make install\
-	&& mkdir -p /run/nginx /data/www /data/filesCenter /data/logs/www\
+	&& mkdir -p /data/nginx/logs /data/nginx/logs\
 	&& mv /usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf.back\
 	&& mv /tmp/nginx.conf /usr/local/nginx/conf/nginx.conf\
 	&& mv /tmp/init.sh /init.sh\
 	&& rm -rf /tmp/*\
-	&& ln -s /usr/local/nginx/sbin/nginx /usr/local/bin\
+	&& ln -s /usr/local/nginx/sbin/nginx /usr/local/bin/ \
 	&& /usr/local/nginx/sbin/nginx -t
 	
 ## install php(enable-fpm) by sourece code
@@ -41,7 +41,7 @@ WORKDIR /tmp/php-7.4.27
 RUN ./configure --prefix=/usr/local/php --enable-fpm\
 	&& make \
 	&& make install\
-	&& /usr/local/php/sbin/php-fpm /usr/local/bin\
+	&& /usr/local/php/sbin/php-fpm /usr/local/bin/ \
 	&& apk del .build-deps
 
 EXPOSE 80 443
