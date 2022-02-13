@@ -47,5 +47,3 @@ RUN ./configure --prefix=/usr/local/php --enable-fpm\
 EXPOSE 80 443
 
 CMD ["/bin/sh","/init.sh"]
-# sudo docker build -t alpine-nginx
-# sudo docker run -id -p 8000:80 -p 8001:81 -h nginx -v /data/www:/data/www -v /data/filesCenter:/data/filesCenter --restart=always --name=nginx alpine-nginx
