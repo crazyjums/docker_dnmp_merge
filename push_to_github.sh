@@ -14,4 +14,4 @@ git status
 git add .
 git commit -m "only push at ${time}"
 # git remote add origin git@github.com:crazyjums/blog3.git
-git push
+git push origin master
