@@ -1,6 +1,6 @@
 ### 0 下载镜像
 
-如果嫌麻烦，可以直接从远程仓库下载已经打包好的镜像：
+如果嫌麻烦，可以直接从远程仓库下载已经打包好的[镜像](https://hub.docker.com/repository/docker/crazyjums/nginx-php-fpm-alpine)：
 ```bash
 $ docker pull crazyjums/nginx-php-fpm-alpine
 ```
