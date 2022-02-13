@@ -4,7 +4,7 @@ LABEL MAINTAINER="<crazyjums@gmail.com>"
 
 ADD nginx-1.18.0.tar.gz /tmp
 ADD nginx/nginx.conf /tmp/nginx.conf
-ADD nginx/init.sh /tmp/init.sh
+ADD start.sh /tmp/start.sh
 
 ## isntall nginx by source code
 WORKDIR /tmp/nginx-1.18.0
@@ -29,7 +29,7 @@ RUN apk update && apk upgrade\
 	&& mkdir -p /data/nginx/logs /data/nginx/logs\
 	&& mv /usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf.back\
 	&& mv /tmp/nginx.conf /usr/local/nginx/conf/nginx.conf\
-	&& mv /tmp/init.sh /init.sh\
+	&& mv /tmp/start.sh /start.sh\
 	&& rm -rf /tmp/*\
 	&& ln -s /usr/local/nginx/sbin/nginx /usr/local/bin/ \
 	&& /usr/local/nginx/sbin/nginx -t
@@ -46,4 +46,4 @@ RUN ./configure --prefix=/usr/local/php --enable-fpm\
 
 EXPOSE 80 443
 
-CMD ["/bin/sh","/init.sh"]
+CMD ["/bin/sh","/start.sh"]
