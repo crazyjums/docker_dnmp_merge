@@ -5,6 +5,7 @@ LABEL MAINTAINER="<crazyjums@gmail.com>"
 ADD nginx-1.18.0.tar.gz /tmp
 COPY nginx/nginx.conf /tmp/nginx.conf
 COPY start.sh /tmp/start.sh
+COPY nginx/include/phptest.conf /tmp/phptest.conf
 
 ## isntall nginx by source code
 WORKDIR /tmp/nginx-1.18.0
@@ -27,11 +28,11 @@ RUN apk update && apk upgrade\
 	&& ./configure --user=nginx --group=nginx --prefix=/usr/local/nginx\
 	&& make\
 	&& make install\
-	&& mkdir -p /data/nginx/logs /data/nginx/logs\
+	&& mkdir -p /data/nginx/logs /data/nginx/logs /usr/local/nginx/conf/include \
 	&& mv /usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf.back\
 	&& mv /tmp/nginx.conf /usr/local/nginx/conf/nginx.conf\
 	&& mv /tmp/start.sh /start.sh\
-	&& rm -rf /tmp/*\
+	&& mv /tmp/phptest.conf /usr/local/nginx/conf/include/phptest.conf \
 	&& ln -s /usr/local/nginx/sbin/nginx /usr/local/bin/ \
 	&& /usr/local/nginx/sbin/nginx -t
 	
@@ -49,6 +50,7 @@ RUN ./configure --prefix=/usr/local/php --enable-fpm\
 	&& mv /tmp/php-fpm.conf /usr/local/php/etc/php-fpm.conf \
 	&& mv /tmp/www.conf /usr/local/php/etc/php-fpm.d/www.conf \
 	&& /usr/local/php/sbin/php-fpm /usr/local/bin/ \
+	&& rm -rf /tmp/* \
 	&& apk del .build-deps
 
 EXPOSE 80 443
