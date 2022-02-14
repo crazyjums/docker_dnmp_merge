@@ -38,7 +38,7 @@ RUN apk update && apk upgrade\
 ADD php-7.4.27.tar.gz /tmp
 WORKDIR /tmp/php-7.4.27
 
-RUN ./configure --prefix=/usr/local/php --enable-fpm\
+RUN ./configure --prefix=/usr/local/php --enable-fpm --disable-fileinfo\
 	&& make \
 	&& make install\
 	&& /usr/local/php/sbin/php-fpm /usr/local/bin/ \
@@ -46,4 +46,4 @@ RUN ./configure --prefix=/usr/local/php --enable-fpm\
 
 EXPOSE 80 443
 
-CMD ["/bin/sh","/start.sh"]
+ENTRYPOINT ["/bin/sh","/start.sh"]
