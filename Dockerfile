@@ -3,8 +3,8 @@ FROM alpine
 LABEL MAINTAINER="<crazyjums@gmail.com>"
 
 ADD nginx-1.18.0.tar.gz /tmp
-ADD nginx/nginx.conf /tmp/nginx.conf
-ADD start.sh /tmp/start.sh
+COPY nginx/nginx.conf /tmp/nginx.conf
+COPY start.sh /tmp/start.sh
 
 ## isntall nginx by source code
 WORKDIR /tmp/nginx-1.18.0
@@ -19,6 +19,7 @@ RUN apk update && apk upgrade\
 	gcc\
 	libc-dev\
 	libxml2-dev\
+	autoconf \
 	&& apk add pcre\
 	&& apk add sqlite-dev \
 	&& addgroup -S nginx\
@@ -36,11 +37,17 @@ RUN apk update && apk upgrade\
 	
 ## install php(enable-fpm) by sourece code
 ADD php-7.4.27.tar.gz /tmp
+COPY php/php-fpm.conf /tmp/php-fpm.conf
+COPY php/php-fpm.d/www.conf /tmp/www.conf
+
 WORKDIR /tmp/php-7.4.27
 
-RUN ./configure --prefix=/usr/local/php --enable-fpm --disable-fileinfo\
+RUN ./configure --prefix=/usr/local/php --enable-fpm\
 	&& make \
-	&& make install\
+	&& make install \
+	# && make test \
+	&& mv /tmp/php-fpm.conf /usr/local/php/etc/php-fpm.conf \
+	&& mv /tmp/www.conf /usr/local/php/etc/php-fpm.d/www.conf \
 	&& /usr/local/php/sbin/php-fpm /usr/local/bin/ \
 	&& apk del .build-deps
 
