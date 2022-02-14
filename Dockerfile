@@ -49,7 +49,7 @@ RUN ./configure --prefix=/usr/local/php --enable-fpm\
 	# && make test \
 	&& mv /tmp/php-fpm.conf /usr/local/php/etc/php-fpm.conf \
 	&& mv /tmp/www.conf /usr/local/php/etc/php-fpm.d/www.conf \
-	&& /usr/local/php/sbin/php-fpm /usr/local/bin/ \
+	&& ln -s /usr/local/php/sbin/php-fpm /usr/local/bin/ \
 	&& rm -rf /tmp/* \
 	&& apk del .build-deps
 
