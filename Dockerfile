@@ -6,6 +6,8 @@ ADD nginx-1.18.0.tar.gz /tmp
 COPY nginx/nginx.conf /tmp/nginx.conf
 COPY start.sh /tmp/start.sh
 COPY nginx/include/phptest.conf /tmp/phptest.conf
+COPY nginx/include/default.conf /tmp/default.conf
+COPY nginx/html/php_nginx/ /tmp/php_nginx/
 
 ## isntall nginx by source code
 WORKDIR /tmp/nginx-1.18.0
@@ -19,10 +21,10 @@ RUN apk update && apk upgrade\
 	make\
 	gcc\
 	libc-dev\
-	libxml2-dev\
 	autoconf \
-	&& apk add pcre\
-	&& apk add sqlite-dev \
+	&& apk add pcre \
+	libxml2-dev\
+	sqlite-dev \
 	&& addgroup -S nginx\
 	&& adduser -S -G nginx -s /sbin/nologin -h /usr/local/nginx nginx\
 	&& ./configure --user=nginx --group=nginx --prefix=/usr/local/nginx\
@@ -33,6 +35,8 @@ RUN apk update && apk upgrade\
 	&& mv /tmp/nginx.conf /usr/local/nginx/conf/nginx.conf\
 	&& mv /tmp/start.sh /start.sh\
 	&& mv /tmp/phptest.conf /usr/local/nginx/conf/include/phptest.conf \
+	&& mv /tmp/default.conf /usr/local/nginx/conf/include/default.conf \
+	&& mv /tmp/php_nginx /usr/local/nginx/html/php_nginx \
 	&& ln -s /usr/local/nginx/sbin/nginx /usr/local/bin/ \
 	&& /usr/local/nginx/sbin/nginx -t
 	
@@ -46,7 +50,6 @@ WORKDIR /tmp/php-7.4.27
 RUN ./configure --prefix=/usr/local/php --enable-fpm\
 	&& make \
 	&& make install \
-	# && make test \
 	&& mv /tmp/php-fpm.conf /usr/local/php/etc/php-fpm.conf \
 	&& mv /tmp/www.conf /usr/local/php/etc/php-fpm.d/www.conf \
 	&& ln -s /usr/local/php/sbin/php-fpm /usr/local/bin/ \
