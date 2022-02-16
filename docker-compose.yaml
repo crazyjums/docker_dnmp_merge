@@ -1,10 +1,14 @@
 version: "3"
 services:
   nginx-php-fpm:
-    image: mmm
+    #    image: mmm
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nginx-php-fpm-one
     ports:
       - 891:80
-#    stdin_open: true
+    #    stdin_open: true
     tty: true
     volumes:
       - ./nginx/include:/usr/local/nginx/conf/include
@@ -12,3 +16,24 @@ services:
       - ./nginx/html/vue_nginx:/usr/local/nginx/html/vue_nginx
       - ./nginx/nginx.conf:/usr/local/nginx/conf/nginx.conf
       - ./nginx/logs:/data/nginx/logs:rw
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - 6380:6379
+    volumes:
+      - ./redis/data:/data
+      - ./redis/conf:/etc/redis/redis.conf:rw
+    privileged: true
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    ports:
+      - 3307:3306
+    volumes:
+      - ./mysql/conf.d:/etc/mysql/conf.d:rw     #配置文件挂载到当前宿主机的/home/mysql/conf
+      - ./mysql/data:/var/lib/mysql:rw            #数据挂载到当前宿主机的 /home/mysql/data
+      - ./mysql/my.cnf:/etc/my.cnf
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345678
