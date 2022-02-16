@@ -16,6 +16,9 @@ services:
       - ./nginx/html/vue_nginx:/usr/local/nginx/html/vue_nginx
       - ./nginx/nginx.conf:/usr/local/nginx/conf/nginx.conf
       - ./nginx/logs:/data/nginx/logs:rw
+      - ./php/php.ini:/usr/local/php/lib/php.ini
+      - ./php/php-fpm.conf:/usr/local/php/etc/php-fpm.conf
+      - ./php/php-fpm.d:/usr/local/php/etc/php-fpm.d
   redis:
     image: redis
     container_name: redis
