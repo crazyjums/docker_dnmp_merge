@@ -12,7 +12,9 @@ COPY nginx/html/php_nginx/ /tmp/php_nginx/
 ## isntall nginx by source code
 WORKDIR /tmp/nginx-1.18.0
 
-RUN apk update && apk upgrade\
+ENV TZ=Asia/Shanghai
+RUN  ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
+    && apk update && apk upgrade\
 	&& apk add --no-cache --virtual .build-deps \
 	mlocate \
 	g++ \
@@ -44,6 +46,7 @@ RUN apk update && apk upgrade\
 ADD php-7.4.27.tar.gz /tmp
 COPY php/php-fpm.conf /tmp/php-fpm.conf
 COPY php/php-fpm.d/www.conf /tmp/www.conf
+COPY php/php.ini /tmp/php.ini
 
 WORKDIR /tmp/php-7.4.27
 
@@ -52,6 +55,7 @@ RUN ./configure --prefix=/usr/local/php --enable-fpm\
 	&& make install \
 	&& mv /tmp/php-fpm.conf /usr/local/php/etc/php-fpm.conf \
 	&& mv /tmp/www.conf /usr/local/php/etc/php-fpm.d/www.conf \
+	&& mv /tmp/php.ini /usr/local/php/lib/php.ini \
 	&& ln -s /usr/local/php/sbin/php-fpm /usr/local/bin/ \
 	&& rm -rf /tmp/* \
 	&& apk del .build-deps
