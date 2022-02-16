@@ -3,9 +3,9 @@ services:
   nginx-php-fpm:
     image: mmm
     ports:
-      - 7777:80
+      - 891:80
 #    stdin_open: true
-#    tty: true
+    tty: true
     volumes:
       - ./nginx/include:/usr/local/nginx/conf/include
       - ./nginx/html/php_nginx:/usr/local/nginx/html/php_nginx
