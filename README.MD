@@ -8,6 +8,8 @@ $ docker pull crazyjums/nginx-php-fpm-alpine
 ```bash
 $ cd dnmp_in_one
 $ docker build -t <image_name> .
+//或者直接使用docker-compose来启动
+$ docker-compose up -d nginx-php-fpm
 ```
 等待几分钟，镜像就打包好了，然后在通过`docker-compose`来管理镜像即可。
 
