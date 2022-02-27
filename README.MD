@@ -1,4 +1,4 @@
-### 0 下载镜像
+# 0 下载镜像
 
 如果嫌麻烦，可以直接从远程仓库下载已经打包好的[镜像](https://hub.docker.com/repository/docker/crazyjums/nginx-php-fpm-alpine)：
 ```bash
@@ -13,7 +13,7 @@ $ docker-compose up -d nginx-php-fpm
 ```
 等待几分钟，镜像就打包好了，然后在通过`docker-compose`来管理镜像即可。
 
-### 1 开启服务
+# 1 开启服务
 
 ```bash
 $ docker-compose up <service_name>
@@ -35,7 +35,7 @@ $ docker-compose up reids -d  //以守护进程的方式运行
 docker run -it -d -p 885:80 --name=nginx-php-fpm222 -v /f/docker/dnmp/dnmp2/nginx/html/vue_nginx:/usr/local/nginx/html/vue_nginx -v /f/docker/dnmp/dnmp2/nginx/include:/usr/local/nginx/conf/include -v /f/docker/dnmp/dnmp2/nginx/html/php_nginx:/usr/local/nginx/html/php_nginx -v /f/docker/dnmp/dnmp2/nginx/logs:/data/nginx/logs -v /f/docker/dnmp/dnmp2/nginx/nginx.conf:/usr/local/nginx/conf/nginx.conf  nginx-php-fpm-alpine-3 /bin/sh /start.sh
 ```
 
-### 2 关闭或重启服务
+# 2 关闭或重启服务
 
 ```bash
 $ docker ps  //查看服务的container id

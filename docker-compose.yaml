@@ -1,7 +1,7 @@
 version: "3"
 services:
   nginx-php-fpm:
-    image: crazyjums/nginx-php-fpm-alpine
+    image: crazyjums/nginx-php-fpm-with-ext-alpine
     # build:
     #   context: .
     #   dockerfile: Dockerfile
@@ -15,9 +15,11 @@ services:
       - ./nginx/html/vue_nginx:/usr/local/nginx/html/vue_nginx
       - ./nginx/nginx.conf:/usr/local/nginx/conf/nginx.conf
       - ./nginx/logs:/data/nginx/logs:rw
-      - ./php/php.ini:/usr/local/php/lib/php.ini
-      - ./php/php-fpm.conf:/usr/local/php/etc/php-fpm.conf
-      - ./php/php-fpm.d:/usr/local/php/etc/php-fpm.d
+      - ./php/php-fpm.d:/usr/local/etc/php-fpm.d
+      - ./php/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - ./php/php.conf.d:/usr/local/etc/php/conf.d
+      - ./php/php.ini-development:/usr/local/etc/php/php/php.ini-development
+      - ./php/php.ini-production:/usr/local/etc/php/php/php.ini-production
   redis:
     image: redis
     container_name: redis
