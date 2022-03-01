@@ -7,7 +7,7 @@ services:
     #   dockerfile: Dockerfile
     container_name: nginx-php-fpm-one
     ports:
-      - 891:80
+      - 80:80
     tty: true
     volumes:
       - ./nginx/include:/usr/local/nginx/conf/include

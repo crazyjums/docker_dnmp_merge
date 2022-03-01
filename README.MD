@@ -35,6 +35,9 @@ $ docker-compose up reids -d  //以守护进程的方式运行
 docker run -it -d -p 80:80 --name=nginx-php-fpm nginx-php-fpm-alpine
 ```
 
+测试服务是否开启：
+在浏览器打开网址：[http://localhost](http://localhost)，如果出现PHP的相关配置信息，则表示成功。
+
 ### 2 关闭或重启服务
 
 ```bash
