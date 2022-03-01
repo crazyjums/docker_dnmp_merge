@@ -1,0 +1,46 @@
+2022/03/01 08:47:01 [notice] 7#0: using the "epoll" event method
+2022/03/01 08:47:01 [notice] 7#0: nginx/1.18.0
+2022/03/01 08:47:01 [notice] 7#0: built by gcc 10.3.1 20211027 (Alpine 10.3.1_git20211027) 
+2022/03/01 08:47:01 [notice] 7#0: OS: Linux 5.4.72-microsoft-standard-WSL2
+2022/03/01 08:47:01 [notice] 7#0: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2022/03/01 08:47:01 [notice] 8#0: start worker processes
+2022/03/01 08:47:01 [notice] 8#0: start worker process 10
+2022/03/01 08:47:01 [notice] 8#0: start worker process 11
+2022/03/01 08:47:01 [notice] 8#0: start worker process 12
+2022/03/01 08:47:01 [notice] 8#0: start worker process 13
+2022/03/01 08:47:04 [error] 13#0: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.20.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "localhost:891"
+2022/03/01 08:47:05 [error] 13#0: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.20.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "localhost:891", referrer: "http://localhost:891/"
+2022/03/01 08:47:10 [error] 13#0: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.20.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "localhost:891"
+2022/03/01 08:47:11 [error] 13#0: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.20.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "localhost:891", referrer: "http://localhost:891/"
+2022/03/01 08:47:13 [error] 13#0: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.20.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "localhost:891"
+2022/03/01 08:47:14 [error] 13#0: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.20.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "localhost:891", referrer: "http://localhost:891/"
+2022/03/01 08:47:15 [error] 13#0: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.20.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "localhost:891"
+2022/03/01 08:47:15 [error] 13#0: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.20.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "localhost:891", referrer: "http://localhost:891/"
+2022/03/01 08:47:15 [error] 13#0: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.20.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "localhost:891"
+2022/03/01 08:47:16 [error] 13#0: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.20.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "localhost:891", referrer: "http://localhost:891/"
+2022/03/01 08:47:16 [error] 13#0: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.20.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "localhost:891"
+2022/03/01 08:47:16 [error] 13#0: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.20.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "localhost:891", referrer: "http://localhost:891/"
+2022/03/01 08:47:59 [error] 13#0: *19 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function mb_substr() in /usr/local/nginx/html/php_nginx/index.php:10
+Stack trace:
+#0 {main}
+  thrown in /usr/local/nginx/html/php_nginx/index.php on line 10" while reading response header from upstream, client: 172.20.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "localhost:891"
+2022/03/01 08:48:00 [error] 13#0: *19 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function mb_substr() in /usr/local/nginx/html/php_nginx/index.php:10
+Stack trace:
+#0 {main}
+  thrown in /usr/local/nginx/html/php_nginx/index.php on line 10" while reading response header from upstream, client: 172.20.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "localhost:891", referrer: "http://localhost:891/"
+2022/03/01 08:48:11 [error] 13#0: *23 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function mb_substr() in /usr/local/nginx/html/php_nginx/index.php:10
+Stack trace:
+#0 {main}
+  thrown in /usr/local/nginx/html/php_nginx/index.php on line 10" while reading response header from upstream, client: 172.20.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "localhost:891"
+2022/03/01 08:48:11 [error] 13#0: *23 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function mb_substr() in /usr/local/nginx/html/php_nginx/index.php:10
+Stack trace:
+#0 {main}
+  thrown in /usr/local/nginx/html/php_nginx/index.php on line 10" while reading response header from upstream, client: 172.20.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "localhost:891", referrer: "http://localhost:891/"
+2022/03/01 08:48:23 [error] 13#0: *27 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function mb_substr() in /usr/local/nginx/html/php_nginx/index.php:11
+Stack trace:
+#0 {main}
+  thrown in /usr/local/nginx/html/php_nginx/index.php on line 11" while reading response header from upstream, client: 172.20.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "localhost:891"
+2022/03/01 08:48:24 [error] 13#0: *27 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function mb_substr() in /usr/local/nginx/html/php_nginx/index.php:11
+Stack trace:
+#0 {main}
+  thrown in /usr/local/nginx/html/php_nginx/index.php on line 11" while reading response header from upstream, client: 172.20.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "localhost:891", referrer: "http://localhost:891/"

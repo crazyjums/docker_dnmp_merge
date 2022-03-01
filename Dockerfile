@@ -5,7 +5,7 @@ LABEL MAINTAINER="<crazyjums@gmail.com>"
 ADD nginx-1.18.0.tar.gz /tmp
 COPY nginx/nginx.conf /tmp/nginx.conf
 COPY start.sh /tmp/start.sh
-COPY nginx/include/phptest.conf /tmp/phptest.conf
+COPY nginx/include/localhost.conf /tmp/localhost.conf
 COPY nginx/include/default.conf /tmp/default.conf
 COPY nginx/html/php_nginx/ /tmp/php_nginx/
 
@@ -36,7 +36,7 @@ RUN  ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone 
 	&& mv /usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf.back\
 	&& mv /tmp/nginx.conf /usr/local/nginx/conf/nginx.conf\
 	&& mv /tmp/start.sh /start.sh\
-	&& mv /tmp/phptest.conf /usr/local/nginx/conf/include/phptest.conf \
+	&& mv /tmp/localhost.conf /usr/local/nginx/conf/include/localhost.conf \
 	&& mv /tmp/default.conf /usr/local/nginx/conf/include/default.conf \
 	&& mv /tmp/php_nginx /usr/local/nginx/html/php_nginx \
 	&& ln -s /usr/local/nginx/sbin/nginx /usr/local/bin/ \
