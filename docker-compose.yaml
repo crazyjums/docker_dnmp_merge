@@ -1,11 +1,11 @@
 version: "3"
 services:
   nginx-php-fpm:
-    image: crazyjums/nginx-php-fpm-with-ext-alpine
+    image: crazyjums/nginx-php-fpm-alpine:with-ext
     # build:
     #   context: .
     #   dockerfile: Dockerfile
-    container_name: nginx-php-fpm-one
+    container_name: nginx-php-fpm-one-with-ext
     ports:
       - 891:80
     tty: true
