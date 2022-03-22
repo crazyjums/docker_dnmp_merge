@@ -7,11 +7,12 @@ services:
     #   dockerfile: Dockerfile
     container_name: nginx-php-fpm-one-with-ext
     ports:
-      - 891:80
+      - 80:80
     tty: true
     volumes:
       - ./nginx/include:/usr/local/nginx/conf/include
       - ./nginx/html/php_nginx:/usr/local/nginx/html/php_nginx
+      - ./nginx/html/localhost:/usr/local/nginx/html/localhost
       - ./nginx/html/vue_nginx:/usr/local/nginx/html/vue_nginx
       - ./nginx/nginx.conf:/usr/local/nginx/conf/nginx.conf
       - ./nginx/logs:/data/nginx/logs:rw
@@ -20,6 +21,7 @@ services:
       - ./php/php.conf.d:/usr/local/etc/php/conf.d
       - ./php/php.ini-development:/usr/local/etc/php/php/php.ini-development
       - ./php/php.ini-production:/usr/local/etc/php/php/php.ini-production
+      - //e/huajiao_code/family:/usr/local/nginx/html/family
   redis:
     image: redis
     container_name: redis

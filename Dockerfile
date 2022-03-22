@@ -9,8 +9,7 @@ COPY nginx/ /tmp/
 WORKDIR /tmp/nginx-1.18.0
 
 ENV TZ=Asia/Shanghai
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
-    && apk update && apk upgrade\
+RUN apk update && apk upgrade \
 	&& apk add --no-cache --virtual .build-deps \
 	g++ \
 	pcre-dev \
@@ -20,6 +19,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
 	libc-dev\
 	autoconf \
 	&& apk add pcre \
+	tzdata \
 	&& addgroup -S nginx\
 	&& adduser -S -G nginx -s /sbin/nologin -h /usr/local/nginx nginx\
 	&& ./configure --user=nginx --group=nginx --prefix=/usr/local/nginx\
@@ -35,8 +35,8 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
 	&& mv /tmp/html/vue_nginx /usr/local/nginx/html/vue_nginx \
 	&& ln -s /usr/local/nginx/sbin/nginx /usr/local/bin/ \
 	&& /usr/local/nginx/sbin/nginx -t\
+	&& ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
 	&& echo 'install nginx success-------------ok'
-
 
 ## install php extensions
 RUN pecl install -o -f yaf \
